@@ -42,7 +42,7 @@
 0. python version for this project:
    python 3.10.6
 
-1. Clone the repo:
+1. Clone repo:
 
 ```
 git clone https://github.com/quin650/TellusEd.git
@@ -65,6 +65,7 @@ pip install -r requirements.txt
 4. Install frontend packages:
 
 ```
+cd ..
 cd frontend
 npm install
 ```
@@ -72,15 +73,24 @@ npm install
 5. Create .env
 
 ```
-cd ..
+cd .. [cd into project folder]
 touch .env
 ```
 
 6. and add:
 
 ```
-SECRET_KEY=<<Password of your choosing>>
-DATABASE_URL=sqlite:///dev.db
+REACT_APP_API_URL = 'http://localhost:8000'
+DEBUG=True
+pgpassword = [This is your Postgres password]
+SECRET_KEY= [see below]
+*Generate new SECRET_KEY
+   cd backend
+   (.venv) backend % python manage.py shell
+   >>> from django.core.management.utils import get_random_secret_key
+   >>> print(get_random_secret_key())
+   Copy and Paste SECRET_KEY in the above mentioned variable
+   ctrl + z
 ```
 
 7. create database
@@ -103,25 +113,26 @@ to quit, run:
 
 ```
 cd backend
+python manage.py makemigrations
 python manage.py migrate
 ```
 
-8. Run the frontend server
-
-```
-npm start
-npm run build
-npm run dev
-```
-
-9. Run the backend server
+8. Run the backend server
 
 ```
 python manage.py runserver
 ```
 
+9. Run the frontend server
+
+```
+npm install --save-dev
+npm run build
+npm run dev
+```
+
 10. Navigate to local site in browser
 
 ```
-http://localhost:8000/
+http://127.0.0.1:8000/ or http://localhost:8000/
 ```
