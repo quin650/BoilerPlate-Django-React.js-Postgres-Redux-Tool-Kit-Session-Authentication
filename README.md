@@ -45,7 +45,7 @@
 1. Clone the repo:
 
 ```
-https://github.com/quin650/TellusEd.git
+git clone https://github.com/quin650/TellusEd.git
 ```
 
 2. Create python Virtual Environment and activate:
